@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<title>Wiztivi Gaming Backend Quizz</title>
+		
+		<link rel="stylesheet" href="//strapdownjs.com/v/0.2/themes/united.min.css" >
+		<link rel="stylesheet" href="//strapdownjs.com/v/0.2/strapdown.css" >
+		<link rel="stylesheet" href="//strapdownjs.com/v/0.2/themes/bootstrap-responsive.min.css" >
+	</head>
+	
+	<body style="">
+		<div class="navbar navbar-fixed-top"><div class="navbar-inner"> 
+			<div class="container"> 
+				<div id="headline" class="brand">Wiztivi Gaming Backend Quizz</div>
+		 	</div> 
+		 </div>
+		</div>
+		 
+		<div class="container" id="content"><h1>Wiztivi Gaming Backend Quizz</h1>
+		<ul>
+			<li>Please return your answers to liisa.kokko@wiztivi.com.</li>
+			<li>Answer with bullet points:
+				<ul>
+				<li>Single sentence per bullet point</li>
+				<li>Max 4 per question</li>
+				</ul>
+			</li>
+			<li>Return in a file named yourname_quiz</li>
+		</ul>
+		
+		<h2>Code review : Write your comments on this function</h2>
+		<p>Someone in your team wrote as part of one of his tasks and you have been assigned for code review.</p>
+		<code class="prettyprint">
+			public function functiontogetTheNickname($user, $slot = NULL, $returnAllData, $includeDeletedNicknames = NULL) {
+				if($returnAllData == true){
+					if($includeDeletedNicknames) {
+						$nicknameData = $this->databaseHandle->getNickname($user, $slot, NULL, $includeDeletedNicknames);
+					} else {
+						$nicknameData = $this->databaseHandle->getNickname($user, $slot);
+					}
+					
+				} else {
+					if($includeDeletedNicknames) {
+						$nicknameData = $this->databaseHandle->getNickname($user,$slot,array('stringValue'),$includeDeletedNicknames);
+					}  else {
+						$nicknameData = $this->databaseHandle->getNickname($user,$slot,array('stringValue'));
+					}
+				}
+				
+				foreach($nicknameData as $key => $value){
+				$nicknameData[$key] = Toolbox::unEscape($value);
+				}
+				
+				return $nicknameData;
+			}
+		</code>
+		
+		<h2>Q10: Coding task</h2>
+		<p>Go to the following codepen: <a href="https://codepen.io/clouarn/pen/PmrRPM">https://codepen.io/clouarn/pen/PmrRPM</a>. See the code comments for the assignment. Remember to <em>click save</em> and return the url for the codepen you created.</p>
+		
+		<script src="//strapdownjs.com/v/0.2/strapdown.js"></script>
+	
+	</body>
+</html>
